@@ -5,7 +5,6 @@ import java.util.OptionalInt;
 import numericalOperations.NumericalOperations;
 import conversion.Conversions;
 
-
 public class LongestBinaryGap {
 
 	public static void main(String[] args) {
@@ -20,7 +19,7 @@ public class LongestBinaryGap {
 		int longestGap = longestGap(splitted, s);
 		System.out.println("The Longest gap is: " + longestGap);
 	}
-
+	
 	public static StringBuilder binaryRep(int N){
 		StringBuilder s = new StringBuilder();
 		while(N >= 1)
@@ -44,8 +43,8 @@ public class LongestBinaryGap {
 				list.add(splitted[i].length());
 			}
 			
-			OptionalInt o = NumericalOperations.findMaxOfArray(list);
-			return o.getAsInt();
+			int max = NumericalOperations.findMaxOfList(list);
+			return max;
 		}
 		else
 			return OptionalInt.of(0).getAsInt();
