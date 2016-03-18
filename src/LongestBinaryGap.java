@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalInt;
 
+import numericalOperations.NumericalOperations;
+import conversion.Conversions;
+
 
 public class LongestBinaryGap {
 
@@ -14,7 +17,7 @@ public class LongestBinaryGap {
 		StringBuilder s = binaryRep(N);
 		System.out.println("Binary representation of " + N + " is " + s);
 		String[] splitted = split(s.toString());
-		int longestGap = longestGap(splitted, s).getAsInt();
+		int longestGap = longestGap(splitted, s);
 		System.out.println("The Longest gap is: " + longestGap);
 	}
 
@@ -33,19 +36,18 @@ public class LongestBinaryGap {
 		return s.toString().split("1");
 	}
 	
-	public static OptionalInt longestGap(String[] splitted, StringBuilder s){
+	public static int longestGap(String[] splitted, StringBuilder s){
 		List<Integer> list = new ArrayList<Integer>();
 		if(s.toString().startsWith("1") & s.toString().endsWith("1"))
 		{
 			for (int i = 0; i < splitted.length; i++) {
-				
 				list.add(splitted[i].length());
 			}
 			
-			OptionalInt o = list.stream().mapToInt(Integer::intValue).max();
-			return o;
+			OptionalInt o = NumericalOperations.findMaxOfArray(list);
+			return o.getAsInt();
 		}
 		else
-			return OptionalInt.of(0);
+			return OptionalInt.of(0).getAsInt();
 	}
 }
